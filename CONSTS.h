@@ -33,10 +33,12 @@ float destination = 0;
 float delta = 0;
 float max_delta = TOLERANCE * angle_per_pulse;
 
-uint16_t rate = 3;
+uint16_t rate = 3; //ms
+uint16_t delay_between_clicks = 300; //ms
 
 bool motor_direction = false;
 uint32_t last_pulse_time = 0;
+uint32_t last_click_time = 0;
 
 
 bool isPressed = false;

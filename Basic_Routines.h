@@ -2,6 +2,7 @@
 #define BASIC_ROUTINES_H
 
 #include "CONSTS.h"
+#include <Keyboard.h>
 
 void one_step(bool);
 
