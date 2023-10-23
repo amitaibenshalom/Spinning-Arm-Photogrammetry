@@ -19,9 +19,8 @@ void set_angle(float ang) {
 
 //-------------print the current angle-------------------
 void print_angle() {
-  char buffer[100];
-  sprintf(buffer, "Current Angle: %f", angle);
-  Serial.println(buffer); 
+  Serial.print("Angle: ");
+  Serial.println(angle);
 }
 
 //------------set destination for angle---------------
@@ -42,6 +41,29 @@ bool in_destination() {
   return (abs(angle-destination) < TOLERANCE);
 }
 
+
+//---------move the motor to the angle with blocking functions as delay
+void hard_move(float dest_angle) {
+  destination = dest_angle;
+  if (in_destination())
+    return;
+  int delta_steps = int(abs(angle-dest_angle)/angle_per_pulse);
+  for (int i = 0; i < delta_steps; i++) {
+    one_step((angle < dest_angle) ? false : true);
+    delay(rate);
+
+    if (send_keys) {
+      if (int(angle) < next_angle_for_image) {
+        Keyboard.write(current_key);
+        current_key++;
+        next_angle_for_image -= angle_per_image;
+      }
+    }
+
+  }
+  print_steps();
+  print_angle();
+}
 
 //----------move a motor one step-----------------
 void one_step(bool move_direction) {

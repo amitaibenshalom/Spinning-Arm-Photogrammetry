@@ -20,25 +20,23 @@ void loop() {
   delay(5); // delay for IO's to stable
   
   if (millis() > last_click_time + delay_between_clicks) {
-    if (digitalRead(BUTTON_PIN) == LOW) {
-        if (millis() > last_pulse_time + rate) {
-          one_step(false);
-          last_pulse_time = millis();
-          // print_steps();
-        }
-      // if (!isPressed) {
-      //   Serial.println("Button pressed...");
-      //   // isPressed = true;
-      // }
-    }
-      // last_click_time = millis();
-
-    else {
-      isPressed = false; 
-
-
-    }
+    clickable = true;
   }
 
+  if (clickable && digitalRead(BUTTON_PIN) == LOW) {
+    clickable = false;
 
+    //start photogrammetry routine:
+    //move to the side
+    hard_move(MAX_ANGLE);
+    delay(DELAY_AT_STOP);
+    Keyboard.write(48);  // 00ABCDEFGHIJKL
+    send_keys = true;
+    current_key = starting_key;
+    next_angle_for_image = MAX_ANGLE;
+    hard_move(MIN_ANGLE);
+    delay(DELAY_AT_STOP);
+    send_keys = false;
+    hard_move(0);
+  }
 }

@@ -14,6 +14,7 @@ void print_angle();
 void print_destination();
 
 bool in_destination();
+void hard_move(float);
 
 void homming();
 
