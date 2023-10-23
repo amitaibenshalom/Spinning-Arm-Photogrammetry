@@ -1,4 +1,4 @@
-#include "CONSTS.h"
+#include "Basic_Routines.h"
 
 void setup() {
 
@@ -10,8 +10,20 @@ void setup() {
   pinMode(ENABLE_PIN, OUTPUT);
   pinMode(LED_OUT, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
+  
+  homming();
 }
 
 void loop() {
-  
+
+  if (digitalRead(BUTTON_PIN) == LOW) {
+    // Serial.println("Button pressed...");
+    isPressed = true;
+    if (millis() > last_pulse_time + rate) {
+      one_step(false);
+      last_pulse_time = millis();
+      print_steps();
+    }
+  }
+  // if (digitalRead(BU))
 }
