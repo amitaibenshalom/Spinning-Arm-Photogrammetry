@@ -100,6 +100,7 @@ void homming(){
 
   set_angle(0);
   set_steps(0);
+  delay(300);
   digitalWrite(ENABLE_PIN, HIGH);
 }
 

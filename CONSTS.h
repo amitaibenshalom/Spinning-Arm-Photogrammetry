@@ -18,7 +18,7 @@ const float TOTAL_ANGLE = MAX_ANGLE - MIN_ANGLE;
 const int NUMBER_OF_IMAGES = 12;
 
 const uint16_t DIRECTION_CHANGE_WAIT_TIME = 500; //[ms] time wait/stop move between change direction to avoid loos steps
-const uint16_t MIN_RATE = 11; //ms - minimum time between steps pulses - faster speed
+const uint16_t MIN_RATE = 70; //ms - minimum time between steps pulses - faster speed
 const uint16_t MAX_RATE = 150; //ms - maximum, time between steps pulses - slower speed
 const uint16_t HOMMING_RATE  = MIN_RATE ; 
 const float TOLERANCE = 0.5;// ratio to mm per pulse tolerance for not move 
@@ -36,7 +36,7 @@ float destination = 0;
 float delta = 0;
 float max_delta = TOLERANCE * angle_per_pulse;
 
-uint16_t rate = 40; //ms
+uint16_t rate = MIN_RATE;
 uint16_t delay_between_clicks = 300; //ms
 
 bool motor_direction = false;

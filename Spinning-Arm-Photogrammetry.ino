@@ -12,7 +12,7 @@ void setup() {
   pinMode(LED_OUT, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   
-  homming();
+//  homming();
 }
 
 void loop() {
