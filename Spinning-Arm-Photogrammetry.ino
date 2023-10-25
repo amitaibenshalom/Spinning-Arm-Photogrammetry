@@ -16,8 +16,6 @@ void setup() {
 }
 
 void loop() {
-
-  delay(5); // delay for IO's to stable
   
   if (millis() > last_click_time + delay_between_clicks) {
     clickable = true;
@@ -25,7 +23,8 @@ void loop() {
 
   if (clickable && digitalRead(BUTTON_PIN) == LOW) {
     clickable = false;
-
+    digitalWrite(ENABLE_PIN, LOW);
+    delay(5); // delay for IO's to stable
     //start photogrammetry routine:
     //move to the side
     hard_move(MAX_ANGLE);
@@ -38,5 +37,7 @@ void loop() {
     delay(DELAY_AT_STOP);
     send_keys = false;
     hard_move(0);
+    delay(5); // delay for IO's to stable
+    digitalWrite(ENABLE_PIN, HIGH);
   }
 }

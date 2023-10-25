@@ -42,7 +42,7 @@ bool in_destination() {
 }
 
 
-//---------move the motor to the angle with blocking functions as delay
+//---------move the motor to the angle with blocking functions as delay - also sends key codes
 void hard_move(float dest_angle) {
   destination = dest_angle;
   if (in_destination())
@@ -100,6 +100,7 @@ void homming(){
 
   set_angle(0);
   set_steps(0);
+  digitalWrite(ENABLE_PIN, HIGH);
 }
 
 //-------blink led XX times, Ton , Toff) --------------------
