@@ -12,8 +12,8 @@ const uint8_t START_LED_BLINK_NUMBER = 3;
 const uint16_t START_LED_BLINK_ON = 100;//ms
 const uint16_t START_LED_BLINK_OFF = 200;//ms
 
-const float MIN_ANGLE = -60;
-const float MAX_ANGLE = 60;
+const float MIN_ANGLE = -45;
+const float MAX_ANGLE = 45;
 const float TOTAL_ANGLE = MAX_ANGLE - MIN_ANGLE;
 const int NUMBER_OF_IMAGES = 12;
 
@@ -45,10 +45,12 @@ uint32_t last_click_time = 0;
 
 bool clickable = true;
 bool send_keys = false;
-int starting_key = 65; //'A'
+const int starting_key = 48; // 0
+const int end_key = 49; // 1
+const int first_angle_key = 65; //'A'
 const float angle_per_image = TOTAL_ANGLE / NUMBER_OF_IMAGES;
 float next_angle_for_image = MAX_ANGLE;
-float current_key = starting_key;
+float current_key = first_angle_key;
 
 #define BAUDRATE (115200)
 

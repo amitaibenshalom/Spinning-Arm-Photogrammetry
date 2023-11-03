@@ -56,6 +56,8 @@ void hard_move(float dest_angle) {
       if (int(angle) < next_angle_for_image) {
         Keyboard.write(current_key);
         current_key++;
+        if (current_key == first_angle_key + NUMBER_OF_IMAGES)
+          Keyboard.write(end_key);
         next_angle_for_image -= angle_per_image;
       }
     }
