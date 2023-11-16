@@ -12,8 +12,8 @@ const uint8_t START_LED_BLINK_NUMBER = 3;
 const uint16_t START_LED_BLINK_ON = 100;//ms
 const uint16_t START_LED_BLINK_OFF = 200;//ms
 
-const float MIN_ANGLE = -45;
-const float MAX_ANGLE = 45;
+const float MIN_ANGLE = -33;
+const float MAX_ANGLE = 33;
 const float TOTAL_ANGLE = MAX_ANGLE - MIN_ANGLE;
 const int NUMBER_OF_IMAGES = 12;
 
