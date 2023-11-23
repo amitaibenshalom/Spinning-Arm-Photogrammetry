@@ -55,8 +55,9 @@ void hard_move(float dest_angle) {
     if (send_keys) {
       if (int(angle) < next_angle_for_image) {
         Keyboard.write(KEY_CAPS_LOCK);
-        delay(100); // You can adjust the delay as needed
-        Keyboard.release(KEY_CAPS_LOCK);
+        // Keyboard.write(KEY_CAPS_LOCK);
+        // delay(100); // You can adjust the delay as needed
+        // Keyboard.release(KEY_CAPS_LOCK);
         // Keyboard.write(current_key);
         current_key++;
         if (current_key == first_angle_key + NUMBER_OF_IMAGES)
